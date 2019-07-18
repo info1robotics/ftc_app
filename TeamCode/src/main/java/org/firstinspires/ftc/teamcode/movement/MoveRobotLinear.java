@@ -10,7 +10,7 @@ public class MoveRobotLinear {
     private Power movementPower;
     private LinearOpMode opMode;
 
-    public MoveRobotLinear(Telemetry telemetry, HardwareMap hardwareMap,
+    public MoveRobotLinear(HardwareMap hardwareMap, Telemetry telemetry,
                            LinearOpMode opMode) {
         motorsController = new MovementMotors(hardwareMap, telemetry);
         movementPower = new Power();
