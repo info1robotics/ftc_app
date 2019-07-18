@@ -41,16 +41,18 @@ public class MoveRobotLinear {
         move(Signs.RIGHT);
     }
 
-    public void moveForwardLeft(double speed) {
-        movementPower.setPower(new Power(-1, speed, -1, speed));
+    public void moveForwardLeft(double speed, double angularSpeed) {
+        movementPower.setPower(
+                new Power(speed, angularSpeed, speed, angularSpeed));
         opMode.telemetry.addLine("Moving ForwardLeft: " +
                 speed);
         opMode.telemetry.update();
         move(Signs.FORWARD_LEFT);
     }
 
-    public void moveForwardRight(double speed) {
-        movementPower.setPower(new Power(speed, 1, speed, 1));
+    public void moveForwardRight(double speed, double angularSpeed) {
+        movementPower.setPower(
+                new Power(speed, angularSpeed, speed, angularSpeed));
         move(Signs.FORWARD_RIGHT);
         opMode.telemetry.addLine("Moving ForwardRight: " +
                 speed);

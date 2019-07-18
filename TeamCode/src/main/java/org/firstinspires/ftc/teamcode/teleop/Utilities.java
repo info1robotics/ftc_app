@@ -21,16 +21,16 @@ import org.firstinspires.ftc.teamcode.movement.MoveRobotLinear;
 
 public class Utilities {
 
-    public static void moveForward(MoveRobotLinear movementController, Gamepad gamepad, LinearOpMode opMode) {
+    public static void moveForward(MoveRobotLinear movementController, Gamepad gamepad, double speed, LinearOpMode opMode) {
         while(opMode.opModeIsActive() && gamepad.dpad_up) {
             double left_trigger = gamepad.left_trigger;
             double right_trigger = gamepad.right_trigger;
 
             if(left_trigger > 0)
-                movementController.moveForwardLeft(left_trigger);
+                movementController.moveForwardLeft(speed, left_trigger);
             else if(right_trigger > 0)
-                movementController.moveForwardRight(right_trigger);
-            else movementController.moveForward(1);
+                movementController.moveForwardRight(speed, right_trigger);
+            else movementController.moveForward(speed);
 
             opMode.idle();
             opMode.telemetry.addLine("Moving Forward");
@@ -41,9 +41,9 @@ public class Utilities {
         movementController.stopAll();
     }
 
-    public static void moveBackward(MoveRobotLinear movementHandler, Gamepad gamepad, LinearOpMode opMode) {
+    public static void moveBackward(MoveRobotLinear movementHandler, Gamepad gamepad, double speed, LinearOpMode opMode) {
         while(opMode.opModeIsActive() && gamepad.dpad_down) {
-            movementHandler.moveBackward(1);
+            movementHandler.moveBackward(speed);
             opMode.idle();
             opMode.telemetry.addLine("Moving Backward");
             opMode.telemetry.update();
@@ -54,9 +54,9 @@ public class Utilities {
         movementHandler.stopAll();
     }
 
-    public static void moveRight(MoveRobotLinear movementHandler, Gamepad gamepad, LinearOpMode opMode) {
+    public static void moveRight(MoveRobotLinear movementHandler, Gamepad gamepad, double speed, LinearOpMode opMode) {
         while(opMode.opModeIsActive() && gamepad.dpad_right) {
-            movementHandler.moveRight(1);
+            movementHandler.moveRight(speed);
             opMode.idle();
             opMode.telemetry.addLine("Moving Right");
             opMode.telemetry.update();
@@ -67,9 +67,9 @@ public class Utilities {
         movementHandler.stopAll();
     }
 
-    public static void moveLeft(MoveRobotLinear movementHandler, Gamepad gamepad, LinearOpMode opMode) {
+    public static void moveLeft(MoveRobotLinear movementHandler, Gamepad gamepad, double speed, LinearOpMode opMode) {
         while(opMode.opModeIsActive() && gamepad.dpad_left) {
-            movementHandler.moveLeft(1);
+            movementHandler.moveLeft(speed);
             opMode.idle();
             opMode.telemetry.addLine("Moving Left");
             opMode.telemetry.update();

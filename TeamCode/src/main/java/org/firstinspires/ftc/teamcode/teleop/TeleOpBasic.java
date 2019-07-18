@@ -10,31 +10,29 @@ import org.firstinspires.ftc.teamcode.movement.MoveRobotLinear;
 import java.util.HashSet;
 
 /**
- *      Initial (not elegant) implementation of a TeleOp class.
- *
- *      Supports
- *          * Initializing the required handlers.
- *          * Mapping controller buttons to actions.
+ * Initial (not elegant) implementation of a TeleOp class.
+ * <p>
+ * Supports
+ * * Initializing the required handlers.
+ * * Mapping controller buttons to actions.
  */
 
 @TeleOp
-public class  TeleOpBasic extends LinearOpMode {
+public class TeleOpBasic extends LinearOpMode {
 
     MoveRobotLinear movementController;
-    HashSet<Button> buttonsList;
-    double MOVEMENT_SPEED = 1;
+    private final double MOVEMENT_SPEED = 1.0;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         movementController = new MoveRobotLinear(this.telemetry,
                 this.hardwareMap, this);
-        buttonsList = new HashSet<>();
 
         telemetry.update();
 
 
-        while(!isStarted() && !isStopRequested()) {
+        while (!isStarted() && !isStopRequested()) {
             telemetry.addData("status", "waiting for start command");
             telemetry.update();
             sleep(200);
@@ -44,14 +42,15 @@ public class  TeleOpBasic extends LinearOpMode {
         while (opModeIsActive()) {
             if (gamepad1.dpad_down)
                 Utilities.moveBackward(movementController,
-                    gamepad1, this);
+                        gamepad1, MOVEMENT_SPEED, this);
             if (gamepad1.dpad_up) Utilities.moveForward(movementController,
-                        gamepad1, this);
+                    gamepad1, MOVEMENT_SPEED, this);
 
-            if (gamepad1.dpad_right) Utilities.moveRight(movementController,
-                    gamepad1, this);
+            if (gamepad1.dpad_right)
+                Utilities.moveRight(movementController,
+                        gamepad1, MOVEMENT_SPEED, this);
             if (gamepad1.dpad_left) Utilities.moveLeft(movementController,
-                    gamepad1, this);
+                    gamepad1, MOVEMENT_SPEED, this);
 
             if (gamepad1.left_trigger > 0)
                 Utilities.spinLeft(movementController, gamepad1, this);
