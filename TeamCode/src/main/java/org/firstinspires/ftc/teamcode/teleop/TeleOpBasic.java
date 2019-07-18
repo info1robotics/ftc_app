@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.movement.MoveRobotLinear;
-import org.firstinspires.ftc.teamcode.movement.Power;
 
 import java.util.HashSet;
 
@@ -44,13 +43,14 @@ public class  TeleOpBasic extends LinearOpMode {
 
         while (opModeIsActive()) {
             if (gamepad1.dpad_down) Utilities.moveBackward(movementController,
-                    gamepad1, this, MOVEMENT_SPEED);
+                    gamepad1, this);
             if (gamepad1.dpad_up) Utilities.moveForward(movementController,
-                    gamepad1, this, MOVEMENT_SPEED);
+                        gamepad1, this);
+
             if (gamepad1.dpad_right) Utilities.moveRight(movementController,
-                    gamepad1, this, MOVEMENT_SPEED);
+                    gamepad1, this);
             if (gamepad1.dpad_left) Utilities.moveLeft(movementController,
-                    gamepad1, this, MOVEMENT_SPEED);
+                    gamepad1, this);
 
             if (gamepad1.left_trigger > 0)
                 Utilities.spinLeft(movementController, gamepad1, this);

@@ -8,12 +8,13 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class MoveRobotLinear {
     private MovementMotors motorsController;
     private Power movementPower;
-
+    private LinearOpMode opMode;
 
     public MoveRobotLinear(Telemetry telemetry, HardwareMap hardwareMap,
                            LinearOpMode opMode) {
         motorsController = new MovementMotors(hardwareMap, telemetry);
         movementPower = new Power(1);
+        this.opMode = opMode;
     }
 
     private void move(Power direction) {
@@ -40,6 +41,14 @@ public class MoveRobotLinear {
         move(Signs.RIGHT);
     }
 
+    //angle == speed I guess??
+    public void moveForwardLeft(double angle) {
+        movementPower.setPower(new Power(-1, angle, -1, angle));
+        opMode.telemetry.addLine("ForwardLeft: " + angle);
+        opMode.telemetry.update();
+        move(Signs.FORWARD_LEFT);
+    }
+
 
     public void spin(double power, double direction) {
         if (direction != 1 && direction != -1) return;
@@ -52,4 +61,13 @@ public class MoveRobotLinear {
         motorsController.setPower(new Power());
     }
 
+    public void moveForwardRight(float angle) {
+        int test = 0;
+
+
+        movementPower.setPower(new Power(angle, 1, angle, 1));
+        move(Signs.FORWARD_RIGHT);
+        opMode.telemetry.addLine("ForwardRight: " + angle);
+        opMode.telemetry.update();
+    }
 }
