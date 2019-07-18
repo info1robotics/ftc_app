@@ -13,7 +13,7 @@ public class MoveRobotLinear {
     public MoveRobotLinear(Telemetry telemetry, HardwareMap hardwareMap,
                            LinearOpMode opMode) {
         motorsController = new MovementMotors(hardwareMap, telemetry);
-        movementPower = new Power(1);
+        movementPower = new Power();
         this.opMode = opMode;
     }
 
@@ -41,12 +41,20 @@ public class MoveRobotLinear {
         move(Signs.RIGHT);
     }
 
-    //angle == speed I guess??
-    public void moveForwardLeft(double angle) {
-        movementPower.setPower(new Power(-1, angle, -1, angle));
-        opMode.telemetry.addLine("ForwardLeft: " + angle);
+    public void moveForwardLeft(double speed) {
+        movementPower.setPower(new Power(-1, speed, -1, speed));
+        opMode.telemetry.addLine("Moving ForwardLeft: " +
+                speed);
         opMode.telemetry.update();
         move(Signs.FORWARD_LEFT);
+    }
+
+    public void moveForwardRight(double speed) {
+        movementPower.setPower(new Power(speed, 1, speed, 1));
+        move(Signs.FORWARD_RIGHT);
+        opMode.telemetry.addLine("Moving ForwardRight: " +
+                speed);
+        opMode.telemetry.update();
     }
 
 
@@ -61,13 +69,4 @@ public class MoveRobotLinear {
         motorsController.setPower(new Power());
     }
 
-    public void moveForwardRight(float angle) {
-        int test = 0;
-
-
-        movementPower.setPower(new Power(angle, 1, angle, 1));
-        move(Signs.FORWARD_RIGHT);
-        opMode.telemetry.addLine("ForwardRight: " + angle);
-        opMode.telemetry.update();
-    }
 }

@@ -42,7 +42,8 @@ public class  TeleOpBasic extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            if (gamepad1.dpad_down) Utilities.moveBackward(movementController,
+            if (gamepad1.dpad_down)
+                Utilities.moveBackward(movementController,
                     gamepad1, this);
             if (gamepad1.dpad_up) Utilities.moveForward(movementController,
                         gamepad1, this);

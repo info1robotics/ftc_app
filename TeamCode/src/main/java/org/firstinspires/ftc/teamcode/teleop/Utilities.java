@@ -23,11 +23,13 @@ public class Utilities {
 
     public static void moveForward(MoveRobotLinear movementController, Gamepad gamepad, LinearOpMode opMode) {
         while(opMode.opModeIsActive() && gamepad.dpad_up) {
-            if(gamepad.left_trigger > 0)
-                movementController.moveForwardLeft(gamepad.left_trigger);
-            else if(gamepad.right_trigger > 0)
-                movementController.moveForwardRight(
-                        gamepad.right_trigger);
+            double left_trigger = gamepad.left_trigger;
+            double right_trigger = gamepad.right_trigger;
+
+            if(left_trigger > 0)
+                movementController.moveForwardLeft(left_trigger);
+            else if(right_trigger > 0)
+                movementController.moveForwardRight(right_trigger);
             else movementController.moveForward(1);
 
             opMode.idle();
@@ -88,8 +90,8 @@ public class Utilities {
         movementHandler.stopAll();
     }
 
-    public static void spinRight(MoveRobotLinear movementHandler
-            , Gamepad gamepad, LinearOpMode opMode) {
+    public static void spinRight(MoveRobotLinear movementHandler,
+                                 Gamepad gamepad, LinearOpMode opMode) {
         while (opMode.opModeIsActive() && gamepad.right_trigger != 0) {
             double speed = gamepad.right_trigger;
             movementHandler.spin(speed, -1);
