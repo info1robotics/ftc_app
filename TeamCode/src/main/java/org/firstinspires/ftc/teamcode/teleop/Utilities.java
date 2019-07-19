@@ -175,8 +175,9 @@ public class Utilities {
                 armController.lowerHookRotator(power);
             }
             opMode.idle();
-            opMode.telemetry.addLine("Changing arm elevatiom");
+            opMode.telemetry.addLine("Changing arm hook elevation");
             opMode.telemetry.update();
         }
+        armController.stopAll();
     }
 }
