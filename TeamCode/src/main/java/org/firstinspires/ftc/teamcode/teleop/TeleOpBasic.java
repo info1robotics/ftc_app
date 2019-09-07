@@ -86,6 +86,14 @@ public class TeleOpBasic extends LinearOpMode {
                 armController.makeHookHold();
             }
 
+            if(gamepad1.y) {
+                Utilities.climbOnLadder(armController, gamepad1, this);
+            }
+
+            if(gamepad1.x) {
+                Utilities.descendFromLander(armController, gamepad1, this);
+            }
+
             idle();
             telemetry.addLine("Connection active");
             telemetry.update();

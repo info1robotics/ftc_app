@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import org.firstinspires.ftc.teamcode.MotorsConstants;
 import org.firstinspires.ftc.teamcode.arm.ArmMotors;
 import org.firstinspires.ftc.teamcode.movement.MoveRobotLinear;
 
@@ -180,4 +181,33 @@ public class Utilities {
         }
         armController.stopAll();
     }
+
+    public static void descendFromLander(ArmMotors armController,
+                                         Gamepad gamepad,
+                                         TeleOpBasic opMode) {
+        double power = MotorsConstants.INITIAL_CLIMB_MOTOR_SPEED;
+
+        while(opMode.opModeIsActive() && gamepad.a) {
+            armController.descendFromLander(power);
+            power *= MotorsConstants.CLIMB_MOTOR_ACCELERATION;
+        }
+
+        armController.stopAll();
+
+    }
+
+    public static void climbOnLadder(ArmMotors armController,
+                                     Gamepad gamepad,
+                                     TeleOpBasic opMode) {
+        double power = MotorsConstants.INITIAL_CLIMB_MOTOR_SPEED;
+
+        while(opMode.opModeIsActive() && gamepad.y) {
+            armController.climbOnLadder(power);
+            power *= MotorsConstants.CLIMB_MOTOR_ACCELERATION;
+        }
+
+        armController.stopAll();
+
+    }
+
 }

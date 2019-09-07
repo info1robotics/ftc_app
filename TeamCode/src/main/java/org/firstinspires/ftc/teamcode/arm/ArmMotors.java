@@ -13,6 +13,7 @@ public class ArmMotors {
     private DcMotor baseMotorLeft, baseMotorRight;
     private DcMotor extenderMotor;
     private DcMotor hookMotorRotator;
+    private DcMotor climbMotor;
 
     private Servo hookLeft, hookRight;
 
@@ -30,6 +31,7 @@ public class ArmMotors {
     private final double HOOK_RIGHT_POSITION_HOLD = 0.75;
     private final double HOOK_RIGHT_POSITION_MIDDLE = 0.7;
     private final double HOOK_RIGHT_POSITION_IDLE = 0.60;
+    private final double CLIMB_MOTOR_SPEED = 1 /* TO BE DETERMINED */;
 
     public ArmMotors(HardwareMap hardwareMap, Telemetry telemetry, TeleOpBasic opMode) {
         baseMotorLeft = hardwareMap.get(DcMotor.class,
@@ -40,6 +42,8 @@ public class ArmMotors {
                 "extenderMotor");
         hookMotorRotator = hardwareMap.get(DcMotor.class,
                 "hookMotorRotator");
+        climbMotor = hardwareMap.get(DcMotor.class, "climbMotor");
+
 
 
         this.opMode = opMode;
@@ -108,13 +112,20 @@ public class ArmMotors {
         hookRight.setPosition(HOOK_RIGHT_POSITION_HOLD);
     }
 
+    public void climbOnLadder(double powerFactor) {
+        climbMotor.setPower(powerFactor * CLIMB_MOTOR_SPEED);
+    }
+
+    public void descendFromLander(double powerFactor) {
+        climbMotor.setPower(-1.0 * powerFactor * CLIMB_MOTOR_SPEED);
+    }
 
     public void stopAll() {
         baseMotorLeft.setPower(0);
         baseMotorRight.setPower(0);
         extenderMotor.setPower(0);
         hookMotorRotator.setPower(0);
-
+        climbMotor.setPower(0);
         console.addLine("Stopped arm completely");
         console.update();
     }
