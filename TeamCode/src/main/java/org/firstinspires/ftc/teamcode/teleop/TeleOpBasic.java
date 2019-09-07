@@ -77,6 +77,7 @@ public class TeleOpBasic extends LinearOpMode {
                 Utilities.changeHookRotatorElevation(armController, gamepad1,
                         this);
             }
+           // 
 
             if (gamepad1.a) {
                 armController.makeHookIdle();
