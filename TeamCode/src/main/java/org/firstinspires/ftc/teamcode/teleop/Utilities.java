@@ -187,7 +187,7 @@ public class Utilities {
                                          TeleOpBasic opMode) {
         double power = MotorsConstants.INITIAL_CLIMB_MOTOR_SPEED;
 
-        while(opMode.opModeIsActive() && gamepad.a) {
+        while(opMode.opModeIsActive() && gamepad.x) {
             armController.descendFromLander(power);
             power *= MotorsConstants.CLIMB_MOTOR_ACCELERATION;
         }
