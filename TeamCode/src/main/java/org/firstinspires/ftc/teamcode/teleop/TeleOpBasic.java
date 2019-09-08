@@ -60,23 +60,24 @@ public class TeleOpBasic extends LinearOpMode {
 
             // Arm Movement
 
-            if(gamepad1.left_stick_y != 0) {
+            /*if(gamepad1.left_stick_y != 0) {
                 Utilities.changeArmElevation(armController, gamepad1,
                         this);
             }
 
             if(gamepad1.left_bumper) {
                 Utilities.contractArm(armController, gamepad1, this);
-            }
+            }*/
 
             if(gamepad1.right_bumper) {
                 Utilities.extendArm(armController, gamepad1, this);
             }
 
+            /*
             if(gamepad1.right_stick_y != 0) {
                 Utilities.changeHookRotatorElevation(armController, gamepad1,
                         this);
-            }
+            }*/
            // 
 
             if (gamepad1.a) {
@@ -87,13 +88,13 @@ public class TeleOpBasic extends LinearOpMode {
                 armController.makeHookHold();
             }
 
-            if(gamepad1.y) {
+            /*if(gamepad1.y) {
                 Utilities.climbOnLadder(armController, gamepad1, this);
             }
 
             if(gamepad1.x) {
                 Utilities.descendFromLander(armController, gamepad1, this);
-            }
+            }*/
 
             idle();
             telemetry.addLine("Connection active");

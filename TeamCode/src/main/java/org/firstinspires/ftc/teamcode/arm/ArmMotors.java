@@ -101,15 +101,7 @@ public class ArmMotors {
         hookLeft.setPosition(HOOK_LEFT_POSITION_HOLD);
         hookRight.setPosition(HOOK_RIGHT_POSITION_HOLD);
 
-        opMode.sleep(1000);
 
-        hookLeft.setPosition(HOOK_LEFT_POSITION_MIDDLE);
-        hookRight.setPosition(HOOK_RIGHT_POSITION_MIDDLE);
-
-        opMode.sleep(200);
-
-        hookLeft.setPosition(HOOK_LEFT_POSITION_HOLD);
-        hookRight.setPosition(HOOK_RIGHT_POSITION_HOLD);
     }
 
     public void climbOnLadder(double powerFactor) {
